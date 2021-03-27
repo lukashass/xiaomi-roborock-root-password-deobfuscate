@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h2>Obfuscated password:</h2>
+    <input
+      id="input"
+      type="text"
+      placeholder="Insert your obfuscated root password here"
+      style="box-sizing: border-box; width: 100%"
+    />
+    <br /><br />
+    <button
+      type="button"
+      onclick="deobfuscate(document.getElementById('input').value)"
+    >
+      Deobfuscate
+    </button>
+    <h2>Deobfuscated password:</h2>
+    <pre id="result"></pre>
+    <script type="text/javascript">
+      const resultField = document.getElementById('result');
+
+      function deobfuscate(input) {
+        resultField.innerText = input
+          .split('')
+          .map((char) => String.fromCharCode(char.charCodeAt(0) ^ 0x37))
+          .join('');
+      }
+    </script>
+  </body>
+</html>
